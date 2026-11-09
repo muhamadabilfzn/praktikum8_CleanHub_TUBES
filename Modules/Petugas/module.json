@@ -1,0 +1,11 @@
+{
+    "name": "Petugas",
+    "alias": "petugas",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Petugas\\Providers\\PetugasServiceProvider"
+    ],
+    "files": []
+}

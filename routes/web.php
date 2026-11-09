@@ -109,12 +109,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::post('laporan/{report}/status', [Admin\ReportController::class, 'updateStatus'])->name('laporan.status');
     Route::delete('laporan/{report}', [Admin\ReportController::class, 'destroy'])->name('laporan.destroy');
 
-    // Manajemen petugas
-    Route::resource('petugas', Admin\OfficerController::class)->except('show')->parameters(['petugas' => 'officer']);
-
-    // Manajemen artikel
-    Route::post('artikel/{article}/toggle', [Admin\ArticleController::class, 'toggle'])->name('artikel.toggle');
-    Route::resource('artikel', Admin\ArticleController::class)->except('show')->parameters(['artikel' => 'article']);
+    // Manajemen petugas  -> Modules/Petugas (CRUD synchronous)
+    // Manajemen artikel  -> Modules/Artikel (CRUD AJAX + upload thumbnail)
+    // Kedua modul memuat route-nya sendiri (Modules/*/routes/web.php) dengan middleware ['auth', 'role:admin'].
 
     // Analytics
     Route::get('analytics', [Admin\AnalyticsController::class, 'index'])->name('analytics.index');
